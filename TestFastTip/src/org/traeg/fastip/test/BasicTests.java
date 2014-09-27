@@ -96,11 +96,17 @@ public class BasicTests extends ActivityInstrumentationTestCase2<MainActivity> {
 	 * Teste mostrando como trabalhar com uma actionbar
 	 */
 	public void testAltaraPercentual_WhiteBox() {
-		solo.clickOnActionBarItem(0);
-		solo.enterText(0, "17");
+		solo.clickOnActionBarItem(R.id.menu_settings);
+		solo.enterText(0, "20");
 		
-		// necessário inserir o testante dos passos do cálculo para utilizar o nome percentaual
-		//<codigo omitido>
+		solo.enterText(0, "");
+		solo.enterText(0, "20");
+		solo.clickOnButton("Save Settings");
+		
+		solo.enterText(0, "15");
+		solo.clickOnButton("Calculate Tip");
+		assertTrue(solo.searchText("3.00"));
+		assertTrue(solo.searchText("18.00"));
 	}
 
 }
